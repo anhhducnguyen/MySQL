@@ -31,3 +31,5 @@ SELECT * FROM books;
 -- 2.Viết câu lệnh T-SQL để chọn tên sách và tác giả của những cuốn sách có giá lớn hơn 50 
 
 SELECT Title, Author FROM books WHERE Price > 50; 
+
+-- complete ass1
