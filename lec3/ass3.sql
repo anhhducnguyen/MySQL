@@ -30,3 +30,6 @@ WHERE StudentID = 1;
 
 SELECT *
 FROM Students;
+
+SELECT *
+FROM Students;
