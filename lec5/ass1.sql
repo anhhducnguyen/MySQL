@@ -1,5 +1,5 @@
--- CREATE DATABASE mydb;
--- USE mydb;
+-- CREATE DATABASE SalesDB;
+-- USE SalesDB;
 
 CREATE TABLE Customers (
     CustomerID INT AUTO_INCREMENT PRIMARY KEY,
