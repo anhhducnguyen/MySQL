@@ -106,6 +106,17 @@ SELECT * from sales
 -- TotalAmountSpent (tổng số tiền đã chi tiêu)
 -- Truy vấn từ view CustomerOrderSummary để tìm các khách hàng có tổng số tiền chi tiêu trên 5000
 
+CREATE VIEW CustomerOrderSummary_view AS 
+    SELECT c.CustomerID,
+        CONCAT(c.firstName, ' ', c.lastName) AS CustomerName,
+        COALESCE(COUNT(o.orderID), 0) AS TotalOrders, 
+        COALESCE(SUM(o.totalAmount), 0) AS TotalAmountSpent 
+    FROM customers c 
+    LEFT JOIN orders o ON c.CustomerID = o.CustomerID
+    GROUP BY c.CustomerID
+
+
+SELECT * FROM CustomerOrderSummary_view;
 
 CREATE INDEX idx_productID ON OrderItems(productID);
 
@@ -130,4 +141,7 @@ SELECT *
 FROM ProductRevenueSummary
 WHERE TotalRevenue > 80 
 ORDER BY TotalRevenue DESC;
+
+
+
 
