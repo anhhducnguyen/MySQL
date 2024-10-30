@@ -7,4 +7,4 @@ Lession 1:
 - Các bước thiết kế CSDL
 - Thiết kế cơ sở dữ liệu
 
-[Bài tập về nhà Lession 1]()
+[Bài tập về nhà ](https://github.com/anhhducnguyen/MySQL/issues/44)
