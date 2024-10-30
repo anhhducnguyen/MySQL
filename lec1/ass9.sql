@@ -55,6 +55,10 @@ LIMIT 3;
 
 -- 3. Viết một câu lệnh T-SQL để tìm danh sách khách hàng có số lượng đơn hàng và tổng chi tiêu cao nhất trong năm 2024. Sắp xếp kết quả theo tổng chi tiêu giảm dần và chỉ chọn các khách hàng có tổng chi tiêu lớn hơn 10,000.
 
+CREATE INDEX idx_sales_customer ON sales(CustomerID);
+CREATE INDEX idx_salesdetails_saleid ON salesdetails(SaleID);
+CREATE INDEX idx_sales_saledate ON sales(SaleDate);
+
 SELECT 
     c.CustomerID, 
     c.CustomerName, 
@@ -65,5 +69,5 @@ JOIN customers c ON s.CustomerID = c.CustomerID
 JOIN salesdetails sd ON sd.SaleID = s.SaleID
 WHERE YEAR(s.SaleDate) = 2024
 GROUP BY c.CustomerID, c.CustomerName
-HAVING TotalSpending > 10000
+HAVING SUM(sd.Quantity * sd.UnitPrice) > 10000
 ORDER BY TotalSpending DESC;
