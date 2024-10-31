@@ -1,0 +1,46 @@
+CREATE DATABASE ECommerceDB; 
+USE ECommerceDB;
+
+
+
+CREATE TABLE `Users` (
+    `ID` INT AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(50) NOT NULL UNIQUE,
+    `passwordHash` VARCHAR(255) NOT NULL,
+    `email` VARCHAR(100) UNIQUE NOT NULL
+);
+
+
+CREATE TABLE `Products` (
+    `ID` INT AUTO_INCREMENT PRIMARY KEY,
+    `productName` VARCHAR(100) NOT NULL,
+    `description` TEXT,
+    `price` DECIMAL(10, 2) NOT NULL,
+    `stock` INT NOT NULL 
+    
+);
+
+
+CREATE TABLE Cart (
+    `ID` INT AUTO_INCREMENT PRIMARY KEY,
+    `userID` INT,
+    `total` INT NOT NULL
+);
+
+
+CREATE TABLE CartItems (
+    `ID` INT AUTO_INCREMENT PRIMARY KEY,
+    `cartID` INT,
+    `productID` INT,
+    `quantity` INT NOT NULL
+);
+
+ALTER TABLE Cart
+ADD CONSTRAINT FK_ID_Cart FOREIGN KEY (userID) REFERENCES Users(ID);
+
+ALTER TABLE CartItems
+ADD CONSTRAINT FK_ID_CartItems FOREIGN KEY (cartID) REFERENCES Products(ID);
+
+
+ALTER TABLE CartItems
+ADD CONSTRAINT FK_ID_CartItems FOREIGN KEY (productID) REFERENCES Products(ID);
