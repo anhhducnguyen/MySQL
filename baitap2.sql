@@ -1,5 +1,5 @@
-CREATE DATABASE test;
-USE test;
+-- CREATE DATABASE test;
+-- USE test;
 
 -- DROP DATABASE test;
 
@@ -32,7 +32,7 @@ CREATE TABLE `building` (
 
 
 CREATE TABLE `design` (
-    `building_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `building_id` INT PRIMARY KEY,
     `architect_id` INT,
     `benefit` VARCHAR(45)
 );
@@ -47,7 +47,7 @@ CREATE TABLE `architect` (
 );
 
 CREATE TABLE `work` (
-    `building_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `building_id` INT PRIMARY KEY,
     `worker_id` INT,
     `date` DATE,
     `total` VARCHAR(45)   
