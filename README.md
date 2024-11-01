@@ -17,6 +17,7 @@ Where you can practice exercises about MySQL, helping you to deepen your knowled
 
 ```bash
 git clone https://github.com/anhhducnguyen/MySQL
+cd MySQL
 ```
 
 ### Content
