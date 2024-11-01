@@ -13,6 +13,12 @@ Where you can practice exercises about MySQL, helping you to deepen your knowled
 2. Install MySQL Workbench software, download here [MySQL Community Downloads](https://dev.mysql.com/downloads/installer/)
 3. Basic use of tools to build databases such as: MySQL Workbench, [draw.io](https://app.diagrams.net/)
 
+### Installs
+
+```bash
+git clone https://github.com/anhhducnguyen/MySQL
+```
+
 ### Content
 
 **Session 1**: MySQL database management system
