@@ -1,5 +1,8 @@
 # MySQL
 
+
+
+
 Where you can practice exercises about MySQL, helping you to deepen your knowledge of MySQL. Some knowledge you can learn from me from the basics such as creating data tables, relationships between them, using MySQL Workbench to create databases without having to code, simple queries ... then you can learn advanced lessons such as creating tables with code, performing complex queries between tables, optimizing queries to improve your application performance. Hope it will be useful for you.
 
 
