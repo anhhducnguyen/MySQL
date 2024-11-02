@@ -1,11 +1,6 @@
 # MySQL
 
-
-
-
 Where you can practice exercises about MySQL, helping you to deepen your knowledge of MySQL. Some knowledge you can learn from me from the basics such as creating data tables, relationships between them, using MySQL Workbench to create databases without having to code, simple queries ... then you can learn advanced lessons such as creating tables with code, performing complex queries between tables, optimizing queries to improve your application performance. Hope it will be useful for you.
-
-
 
 > [!IMPORTANT]
 > Follow me here [My progress](https://github.com/anhhducnguyen/MySQL/issues/44) and do the exercises in order. 
@@ -44,6 +39,9 @@ cd MySQL
 Details are available at [Database programming framework](https://github.com/anhhducnguyen/MySQL/wiki)
 
 ### References
+
+
+### Contact
 
 
 
