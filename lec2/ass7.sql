@@ -57,3 +57,52 @@ VALUES
 
 
 
+
+WITH RecentQuarter AS (
+    SELECT 
+        QUARTER(MAX(SaleDate)) AS LastQuarter,
+        YEAR(MAX(SaleDate)) AS LastYear
+    FROM Sales
+)
+SELECT 
+    
+    p.Category,
+    SUM(sd.Quantity * sd.UnitPrice) AS TotalRevenue
+FROM 
+    Sales s
+JOIN 
+    SalesDetails sd ON s.SaleID = sd.SaleID
+JOIN 
+    Products p ON sd.ProductID = p.ProductID
+JOIN 
+    RecentQuarter rq ON QUARTER(s.SaleDate) = rq.LastQuarter
+                      AND YEAR(s.SaleDate) = rq.LastYear
+GROUP BY 
+    p.Category
+ORDER BY 
+    TotalRevenue DESC;
+
+
+SELECT 
+    Category,
+    TotalRevenue
+FROM (
+    SELECT 
+        p.Category,
+        SUM(sd.Quantity * sd.UnitPrice) AS TotalRevenue
+    FROM 
+        Sales s
+    JOIN 
+        SalesDetails sd ON s.SaleID = sd.SaleID
+    JOIN 
+        Products p ON sd.ProductID = p.ProductID
+    WHERE 
+        QUARTER(s.SaleDate) = (SELECT QUARTER(MAX(SaleDate)) FROM Sales)
+        AND YEAR(s.SaleDate) = (SELECT YEAR(MAX(SaleDate)) FROM Sales)
+    GROUP BY 
+        p.Category
+) AS CategoryRevenue
+ORDER BY 
+    TotalRevenue DESC
+LIMIT 1;
+
