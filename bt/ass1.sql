@@ -39,7 +39,7 @@ FROM Architect a;
 
 -- Hiển thị những năm sinh có thể có của các kiến trúc sư
 
-SELECT DISTINCT a.name, a.birthday
+SELECT DISTINCT a.birthday
 FROM Architect a; 
 
 -- Hiển thị danh sách các kiến trúc sư (họ tên và năm sinh) (giá trị năm sinh tăng dần)
@@ -72,7 +72,7 @@ WHERE a.name = "le thanh tung";
 
 -- Hiển thị tên, năm sinh các công nhân có chuyên môn hàn hoặc điện
 
-SELECT DISTINCT wr.name, wr.birthday, wr.skill
+SELECT DISTINCT wr.name
 FROM worker wr
 WHERE wr.skill = 'han' OR wr.skill = 'dien';
 
@@ -80,13 +80,13 @@ WHERE wr.skill = 'han' OR wr.skill = 'dien';
 
 -- Hiển thị tên các công nhân có chuyên môn hàn hoặc điện và năm sinh lớn hơn 1948
 
-SELECT DISTINCT wr.name, wr.birthday, wr.skill
+SELECT DISTINCT wr.name
 FROM worker wr
 WHERE wr.skill = 'han' OR wr.skill = 'dien' AND  wr.birthday > 1948;
 
 -- Hiển thị những công nhân bắt đầu vào nghề khi dưới 20 (birthday + 20 > year)
 
-SELECT DISTINCT wr.name, wr.birthday, wr.skill
+SELECT *
 FROM worker wr
 WHERE (wr.birthday + 20 > wr.year);
 
