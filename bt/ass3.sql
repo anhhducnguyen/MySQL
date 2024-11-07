@@ -123,7 +123,7 @@ GROUP BY
 -- Thống Kê Nhân Viên: Viết truy vấn để lấy thông tin các nhân viên cùng với số lượng công việc họ đã thực hiện và tổng số giờ làm việc của họ. 
 -- Sử dụng LEFT JOIN và GROUP BY.
 
-SELECT e.*, SUM(t.HoursWorked) AS ` Tổng số giờ làm việc`
+SELECT e.*, COUNT(t.TaskID) AS `Số lượng công việc`,SUM(t.HoursWorked) AS `Tổng số giờ làm việc`
 FROM employees e
 LEFT JOIN tasks t ON e.EmployeeID = t.AssignedTo
 GROUP BY e.EmployeeID;
