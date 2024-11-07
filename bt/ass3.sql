@@ -93,8 +93,17 @@ WHERE  TaskID  = 5;
 
 -- Tính Tổng Chi Phí: Viết truy vấn để tính tổng chi phí cho từng dự án. 
 -- Chi phí của từng dự án được tính bằng tổng số giờ làm việc của tất cả các công việc trong dự án nhân với một tỷ lệ chi phí giờ làm việc giả định là 50.00.
-SELECT (`Budget`*50) AS `Tổng Chi Phí` 
-FROM `qlda_nv`.`projects`;
+SELECT 
+    p.ProjectID,
+    p.ProjectName,
+    SUM(t.HoursWorked) * 50.00 AS `Tổng Chi Phí`
+FROM 
+    projects p
+LEFT JOIN 
+    tasks t ON p.ProjectID = t.ProjectID
+GROUP BY 
+    p.ProjectID, p.ProjectName;
+
 
 
 -- Thống Kê Dự Án: Viết truy vấn để lấy danh sách các dự án cùng với tổng số công việc hoàn thành và số công việc đang thực hiện. Sử dụng hàm COUNT và CASE WHEN.
