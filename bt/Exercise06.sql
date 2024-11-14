@@ -111,5 +111,18 @@ INNER JOIN Employee e ON ed.employee_id = e.employee_id
 GROUP BY d.department_name
 HAVING SUM(e.salary) > 100000;  
 
+-- f.Viết câu lệnh SQL để liệt kê tất cả các nhân viên làm việc trong hơn 2 bộ phận khác nhau. Kết quả cần hiển thị mã nhân viên, tên nhân viên và số lượng bộ phận mà họ tham gia.
+
+
+
+SELECT 
+    e.employee_id, 
+    e.`name`, 
+    COUNT(ed.department_id) AS department_count
+FROM employee e
+JOIN employee_department ed ON e.employee_id = ed.employee_id
+GROUP BY e.employee_id, e.`name`
+HAVING COUNT(ed.department_id) > 2;
+
 
 
