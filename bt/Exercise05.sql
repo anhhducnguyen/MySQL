@@ -1,6 +1,8 @@
 -- Exercise 05
 -- Hiển thị tên công trình, tên chủ nhân và tên chủ thầu của công trình đó
 
+USE sql_qlct;
+
 SELECT 
 	b.`name` AS `Tên công trình`, 
     h.`name` AS `Tên chủ nhân`, 
@@ -225,14 +227,18 @@ HAVING SUM(d.benefit) > 25;
 
 -- Cho biết số lượng các kiến trúc sư có tổng thù lao thiết kế các công trình lớn hơn 25 triệu
 
-SELECT 
-	a.`name` `Tên kiến trúc sư`,
-    COUNT(a.id) AS `Số lượng công trình lớn hơn 25 triệu`
-FROM sql_qlct.building b
-INNER JOIN `sql_qlct`.`design` d ON  d.building_id = b.id
-INNER JOIN `sql_qlct`.`architect` a ON a.id = d.architect_id
-GROUP BY a.`name`
-HAVING SUM(d.benefit) > 25;
+SELECT COUNT(temp.`Tên kiến trúc sư`) AS `Tổng số lượng kiến trúc sư có tổng thù lao thiết kế các công trình lớn hơn 25 triệu`
+FROM
+(
+    SELECT 
+        a.`name` AS `Tên kiến trúc sư`,
+        COUNT(a.id) AS `Số lượng công trình lớn hơn 25 triệu`
+    FROM sql_qlct.building b
+    INNER JOIN `sql_qlct`.`design` d ON  d.building_id = b.id
+    INNER JOIN `sql_qlct`.`architect` a ON a.id = d.architect_id
+    GROUP BY a.`name`
+    HAVING SUM(d.benefit) > 25
+) AS temp;
 
 
 
@@ -271,18 +277,18 @@ GROUP BY b.city;
 
 -- Cho biết họ tên các công nhân có tổng số ngày tham gia vào các công trình lớn hơn tổng số ngày tham gia của công nhân Nguyễn Hồng Vân
 
-SELECT 
-    wr.`name` AS `Tên công nhân`,
-    SUM(w.`date`) AS `Tổng số ngày tham gia`
-FROM sql_qlct.worker wr
-INNER JOIN `sql_qlct`.`work` w ON wr.id = w.worker_id
-GROUP BY wr.`name`
-HAVING SUM(w.`date`) > (
-    SELECT SUM(w2.`date`)
-    FROM sql_qlct.worker wr2
-    INNER JOIN `sql_qlct`.`work` w2 ON wr2.id = w2.worker_id
-    WHERE wr2.`name` = 'Nguyễn Hồng Vân'
-);
+SELECT w.name, SUM(total) AS `Tổng số ngày tham gia`
+FROM work wo 
+INNER JOIN worker w ON wo.worker_id = w.id
+GROUP BY wo.worker_id
+HAVING `Tổng số ngày tham gia` >
+	(
+		SELECT SUM(total)
+		FROM work AS wo, worker AS w
+		WHERE wo.worker_id = w.id
+		  AND w.name = 'nguyen hong van'
+		GROUP BY wo.worker_id
+	);
 
 
 -- Cho biết tổng số công trình mà mỗi chủ thầu đã thi công tại mỗi thành phố
