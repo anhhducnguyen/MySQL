@@ -13,6 +13,8 @@ Where you can practice exercises about MySQL, helping you to deepen your knowled
 
 ### Installs
 
+How to install:
+
 ```bash
 git clone https://github.com/anhhducnguyen/MySQL
 cd MySQL
