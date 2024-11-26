@@ -22,21 +22,21 @@ cd MySQL
 
 ### Content
 
-**Session 1**: MySQL database management system.
+**Session 1**: MySQL database management system
 
-**Session 2**: Database design.
+**Session 2**: Database design
 
-**Session 3**: DML statements and queries.
+**Session 3**: DML statements and queries
 
-**Session 4**: Advanced queries.
+**Session 4**: Advanced queries
 
-**Session 5**: View - Index.
+**Session 5**: View - Index
 
-**Session 6**: Procedure.
+**Session 6**: Procedure
 
-**Session 7**:Trigger.
+**Session 7**:Trigger
 
-**Session 8**: Transaction.
+**Session 8**: Transaction
 
 Details are available at [Database programming framework](https://github.com/anhhducnguyen/MySQL/wiki)
 
